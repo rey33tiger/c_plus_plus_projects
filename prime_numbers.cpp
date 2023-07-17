@@ -14,7 +14,7 @@ int main()
     int how_many = 1000;
       for(int i = 1; i <= how_many; i++)
       {
-          if(inumsPrime(i))
+          if(isnumPrime(i))
           {
           cout << i << "\n";
           }
