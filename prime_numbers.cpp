@@ -1,7 +1,7 @@
 #include <iostream> 
 using namespace std;
  
-bool isPrime(int n)
+bool isnumPrime(int n)
 {
       for(int i = 2; i < n/2; i++)
       {
@@ -14,7 +14,7 @@ int main()
     int how_many = 1000;
       for(int i = 1; i <= how_many; i++)
       {
-          if(isPrime(i))
+          if(inumsPrime(i))
           {
           cout << i << "\n";
           }
