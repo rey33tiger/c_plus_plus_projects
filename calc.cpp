@@ -15,13 +15,13 @@ int main() {
     bool x = true;
     while (x == true) {
         for (int i = 0; i < first_num.size(); ++i) {
-            if (isdigit(first_num[i]) == false) {
+            if (isdigit(first_num[i]) == false and first_num[i] != '.') {
                 std::cout << "Invalid first number\n\n";
                 input_output(first_num, second_num);
             }
         }
         for (int i = 0; i < second_num.size(); ++i) {
-            if (isdigit(second_num[i]) == false) {
+            if (isdigit(second_num[i]) == false and second_num[i] != '.') {
                 std::cout << "Invalid second number\n\n";
                 input_output(first_num, second_num);
             }
