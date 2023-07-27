@@ -18,22 +18,39 @@ int main() {
     
     //function to continue until valid inputs are given
     while (x == true) {
-            
-    //checking if first number is valid
+        int e = 0;
+        int dot = 0;
+        //checking if first number is valid
         for (int i = 0; i < first_num.size(); ++i) {
             
-            //checking for scientific notataion
-            if (isdigit(first_num[0]) and first_num[1] == 'e' and isdigit(first_num[2]) and first_num.size() == 3) {
-                break;
-            }
-            
-            if (isdigit(first_num[i]) == false and first_num[i] != '.') {
+            if (isdigit(first_num[0]) or first_num[0] == '-' or first_num[0] == '+') {
+                if (first_num[i] == 'e') {
+                    e += 1;
+                    if (e > 1) {
+                        std::cout << "Invalid first number\n\n";
+                        input_output(first_num, second_num);
+                    }
+                }
+                else if (first_num[i] == '.') {
+                    dot += 1;
+                    if (dot > 1) {
+                        std::cout << "Invalid first number\n\n";
+                        input_output(first_num, second_num);
+                    }
+                }
+                else if (isdigit(first_num[i]) == false) {
+                    std::cout << "Invalid first number\n\n";
+                    input_output(first_num, second_num);
+                    }
+                }
+                
+            else {
                 std::cout << "Invalid first number\n\n";
                 input_output(first_num, second_num);
             }
         }
         
-    //checking if second number is valid
+        //checking if second number is valid
         for (int i = 0; i < second_num.size(); ++i) {
             //checking for scientific notataion
             if (isdigit(second_num[0]) and second_num[1] == 'e' and isdigit(second_num[2]) and second_num.size() == 3) {
