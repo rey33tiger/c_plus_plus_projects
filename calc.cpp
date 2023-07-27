@@ -20,10 +20,16 @@ int main() {
     while (x == true) {
         int e = 0;
         int dot = 0;
-        //checking if first number is valid
-        for (int i = 0; i < first_num.size(); ++i) {
-            
-            if (isdigit(first_num[0]) or first_num[0] == '-' or first_num[0] == '+') {
+        int e2 = 0;
+        int dot2 = 0;
+        
+        //check for first char (sign or digit)
+        if (isdigit(first_num[0]) or first_num[0] == '-' or first_num[0] == '+') {
+        
+            //checking if first number is valid
+            for (int i = 0; i < first_num.size(); ++i) {
+                
+                //check for scientific notation
                 if (first_num[i] == 'e') {
                     e += 1;
                     if (e > 1) {
@@ -31,6 +37,8 @@ int main() {
                         input_output(first_num, second_num);
                     }
                 }
+                
+                //check for decimal point
                 else if (first_num[i] == '.') {
                     dot += 1;
                     if (dot > 1) {
@@ -38,31 +46,73 @@ int main() {
                         input_output(first_num, second_num);
                     }
                 }
-                else if (isdigit(first_num[i]) == false) {
-                    std::cout << "Invalid first number\n\n";
-                    input_output(first_num, second_num);
+                
+                else if (first_num[i] == '+' or first_num[i] == '-') {
+                    if (i != 0) {
+                        std::cout << "Invalid first number\n\n";
+                        input_output(first_num, second_num);
                     }
                 }
                 
-            else {
-                std::cout << "Invalid first number\n\n";
-                input_output(first_num, second_num);
+                // everything else is invalid
+                else if (isdigit(first_num[i]) == false) {
+                    std::cout << "Invalid first number\n\n";
+                    input_output(first_num, second_num);
+                }
             }
-        }
+        }    
         
-        //checking if second number is valid
-        for (int i = 0; i < second_num.size(); ++i) {
-            //checking for scientific notataion
-            if (isdigit(second_num[0]) and second_num[1] == 'e' and isdigit(second_num[2]) and second_num.size() == 3) {
-                break;
-            }
-            
-            if (isdigit(second_num[i]) == false and second_num[i] != '.') {
-                std::cout << "Invalid second number\n\n";
-                input_output(first_num, second_num);
-            }
-        }
+        //if the first character is invalid
+        else {
+            std::cout << "Invalid first number\n\n";
+            input_output(first_num, second_num);
+        }        
+
+        //check for first char (sign or digit)
+        if (isdigit(second_num[0]) or second_num[0] == '-' or second_num[0] == '+') {
         
+            //checking if first number is valid
+            for (int i = 0; i < second_num.size(); ++i) {
+                
+                //check for scientific notation
+                if (second_num[i] == 'e') {
+                    e2 += 1;
+                    if (e2 > 1) {
+                        std::cout << "Invalid second number\n\n";
+                        input_output(first_num, second_num);
+                    }
+                }
+                
+                //check for decimal point
+                else if (second_num[i] == '.') {
+                    dot2 += 1;
+                    if (dot2 > 1) {
+                        std::cout << "Invalid second number\n\n";
+                        input_output(first_num, second_num);
+                    }
+                }
+                
+                else if (second_num[i] == '+' or second_num[i] == '-') {
+                    if (i != 0) {
+                        std::cout << "Invalid second number\n\n";
+                        input_output(first_num, second_num);
+                    }
+                }
+                
+                // everything else is invalid
+                else if (isdigit(second_num[i]) == false) {
+                    std::cout << "Invalid second number\n\n";
+                    input_output(first_num, second_num);
+                }
+            }
+        }    
+        
+        //if the first character is invalid
+        else {
+            std::cout << "Invalid second number\n\n";
+            input_output(first_num, second_num);
+        }        
+
         //get operater
         std::cout << "Type Operater(+, -, /, or *): ";
         std::cin >> operand;
