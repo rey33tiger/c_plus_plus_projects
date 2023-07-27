@@ -58,7 +58,7 @@ void calc() {
     
     std::string first_num;
     std::string second_num;
-    char operand;
+    std::string operand;
     input_output(first_num, second_num);
     bool x = true;
     
@@ -84,11 +84,17 @@ void calc() {
         //get operater
         std::cout << "Type Operater(+, -, /, or *): ";
         std::cin >> operand;
+        if (operand.size() > 1) {
+            std::cout << "Please enter only one thing for the operater \n\n";
+            return;
+        }
+        
+        char ch_operand = operand[1];
         double first_double = std::stod(first_num);
         double second_double = std::stod(second_num);
         
         //figure which operation to use and if operation is valid
-        switch (operand) {
+        switch (ch_operand) {
             
             case '+':
                 std::cout << "The answer is: " << first_double + second_double << "\n\n";
