@@ -53,6 +53,12 @@ int check_number(std::string &number, int &e, int &dot) {
     }        
 }
     
+void operand_func (std::string &operand) {
+    //get operater
+    std::cout << "Type Operater(+, -, /, or *): ";
+    std::cin >> operand;
+
+}
 
 void calc() {
     
@@ -80,55 +86,52 @@ void calc() {
             std::cout << "Invalid second number \n\n";
             return;
         }
-        
-        //get operater
-        std::cout << "Type Operater(+, -, /, or *): ";
-        std::cin >> operand;
+        operand_func(operand);
         if (operand.size() > 1) {
-            std::cout << "Please enter only one thing for the operater \n\n";
-            return;
+            std::cout << "Please enter only one character for the operater \n\n";
+            operand_func(operand);
         }
-        
-        char ch_operand = operand[1];
-        double first_double = std::stod(first_num);
-        double second_double = std::stod(second_num);
-        
-        //figure which operation to use and if operation is valid
-        switch (ch_operand) {
-            
-            case '+':
-                std::cout << "The answer is: " << first_double + second_double << "\n\n";
-                x = false;
-                break;
+        if (operand.size() == 1) {
+            char ch_operand = operand[0];
+            double first_double = std::stod(first_num);
+            double second_double = std::stod(second_num);
+            //figure which operation to use and if operation is valid
+            switch (ch_operand) {
                 
-            case '-':
-                std::cout << "The answer is: " << first_double - second_double << "\n\n";
-                x = false;
-                break;
-                
-            case '/':
-            
-                if (second_double == 0) {
-                    std::cout << "Can not divide by zero \n\n";
-                    break;
-                }
-                
-                else {
-                    std::cout << "The answer is: " << first_double / second_double << "\n\n";
+                case '+':
+                    std::cout << "The answer is: " << first_double + second_double << "\n\n";
                     x = false;
                     break;
-                }
+                    
+                case '-':
+                    std::cout << "The answer is: " << first_double - second_double << "\n\n";
+                    x = false;
+                    break;
+                    
+                case '/':
                 
-            case '*':
-                std::cout << "The answer is: " << first_double * second_double << "\n\n";
-                x = false;
-                break;
-            
-            //if operand is invalid
-            default:
-                std::cout  << "Type a valid operator \n\n";
-                break;
-        }
+                    if (second_double == 0) {
+                        std::cout << "Can not divide by zero \n\n";
+                        break;
+                    }
+                    
+                    else {
+                        std::cout << "The answer is: " << first_double / second_double << "\n\n";
+                        x = false;
+                        break;
+                    }
+                    
+                case '*':
+                    std::cout << "The answer is: " << first_double * second_double << "\n\n";
+                    x = false;
+                    break;
+                
+                //if operand is invalid
+                default:
+                    std::cout  << "Type a valid operator \n\n";
+                    break;
+            }
+        }    
     }
 }
 
